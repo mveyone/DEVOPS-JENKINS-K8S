@@ -15,11 +15,11 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
+          kubernetesDeploy(configs: "k8s/deploymentservice.yml ", kubeconfigId: "kubernetes")
+          // kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
+          // kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
+          // kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
+          // kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
           
         }
       }
