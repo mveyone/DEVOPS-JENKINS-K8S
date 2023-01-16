@@ -14,8 +14,7 @@ pipeline {
         stage('deployment k8s') {
             steps {
                   sh """
-                ansible-playbook k8s/docker-playbook.yml
-                ansible-playbook k8s/ansible-dcompose.yml
+                ansible-playbook k8s/k8s-playbook.yml
                 """
             }
         }
