@@ -4,72 +4,20 @@ pipeline {
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 	}
-    stages {
+  stages {
         stage('Docker Login') {
             steps {
                 // Add --password-stdin to run docker login command non-interactively
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-      }    
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
-          
+        stage('deployment k8s') {
+            steps {
+                  sh """
+                k8s/ansible-playbook docker-playbook.yml
+                ansible-playbook ansible-dcompose.yml
+                """
+            }
         }
-      }
-    }
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          // kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
-          
-        }
-      }
-    }
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          // kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
-          
-        }
-      }
-    }
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          // kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
-          
-        }
-      }
-    }
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          // kubernetesDeploy(configs: "k8s/secret.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/configMap.yml ", kubeconfigId: "kubernetes")
-          // kubernetesDeploy(configs: "k8s/mongo-express.yml ", kubeconfigId: "kubernetes")
-          kubernetesDeploy(configs: "k8s/nodejs.yml ", kubeconfigId: "kubernetes")
-          
-        }
-      }
-    }
   }
+}
