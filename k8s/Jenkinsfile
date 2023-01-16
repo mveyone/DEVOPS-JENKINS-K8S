@@ -15,7 +15,7 @@ pipeline {
             steps {
                   sh """
                 k8s/ansible-playbook docker-playbook.yml
-                ansible-playbook ansible-dcompose.yml
+                k8s/ansible-playbook ansible-dcompose.yml
                 """
             }
         }
