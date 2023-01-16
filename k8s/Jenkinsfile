@@ -13,7 +13,9 @@ pipeline {
         }
         stage ('k8s credentials'){
           steps{
-            kubernetesDeploy configs: '', kubeConfig: [path: ' ansible-playbook k8s/k8s-playbook.yml'], kubeconfigId: 'kubernetes', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+              script{
+                    kubernetesDeploy (configs: 'k8s/k8s-playbook.yml',kubeconfigId: 'kubernetes')
+                }
           }
         }
         stage('deployment k8s') {
