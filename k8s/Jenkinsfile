@@ -20,10 +20,10 @@ pipeline {
         // }
         stage('deployment k8s') {
             steps {
-              kubernetesDeploy (configs: 'k8s/secret.yml',kubeconfigId: 'kubernetes')
-                  sh """
-                ansible-playbook k8s/k8s-playbook.yml
-                """
+              kubernetesDeploy (configs: 'k8s/secret.yml',kubeconfigId: 'kubernetes', cd k8s/ ansible-playbook k8s/k8s-playbook.yml)
+                //   sh """
+                // ansible-playbook k8s/k8s-playbook.yml
+                // """
             }
         }
   }
