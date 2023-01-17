@@ -7,7 +7,7 @@
      ignore_errors: yes    
 
    - name : apply nodejsapp.yml
-     command: kubectl apply -f k8s/nodejsapp.yml
+     command: kubectl apply -f deploymentservice.yml
   #  - name: create namespace ninja
   #    command: kubectl create ns ninja
 
