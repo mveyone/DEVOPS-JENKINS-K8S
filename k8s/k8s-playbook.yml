@@ -6,25 +6,25 @@
      command: kubectl delete ns ninja
      ignore_errors: yes    
 
-   - name : apply nodejsapp.yml
-     command: kubectl apply -f secret.yml
-  #  - name: create namespace ninja
-  #    command: kubectl create ns ninja
+  #  - name : apply nodejsapp.yml
+  #    command: kubectl apply -f k8s/nodejsapp.yml
+   - name: create namespace ninja
+     command: kubectl create ns ninja
 
-  #  - name: deploy secret
-  #    command: kubectl apply -f k8s/secret.yml
+   - name: deploy secret
+     command: kubectl apply -f k8s/secret.yml
 
-  #  - name: deploy mongo.yml
-  #    command: kubectl apply -f k8s/mongo.yml
+   - name: deploy mongo.yml
+     command: kubectl apply -f k8s/mongo.yml
 
-  #  - name: deploy configmap
-  #    command: kubectl apply -f k8s/configMap.yml
+   - name: deploy configmap
+     command: kubectl apply -f k8s/configMap.yml
 
-  #  - name: deploy mongo-express
-  #    command: kubectl apply -f k8s/mongo-express.yml
+   - name: deploy mongo-express
+     command: kubectl apply -f k8s/mongo-express.yml
   
-  #  - name: deploy k8s/nodejsApp
-  #    command: kubectl apply -f nodejs.yml
+   - name: deploy k8s/nodejsApp
+     command: kubectl apply -f nodejs.yml
 
-  #  - name: show all deployments
-  #    command: kubectl get all -n ninja
+   - name: show all deployments
+     command: kubectl get all -n ninja
