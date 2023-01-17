@@ -19,8 +19,8 @@
    - name: deploy configmap
      command: kubectl apply -f k8s/configMap.yml
 
-   - name: deploy mongo-express
-     command: kubectl apply -f k8s/mongo-express.yml
+  #  - name: deploy mongo-express
+  #    command: kubectl apply -f k8s/mongo-express.yml
   
    - name: deploy k8s/nodejsApp
      command: kubectl apply -f nodejs.yml
