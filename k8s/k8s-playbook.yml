@@ -1,7 +1,7 @@
 ---
 - name : "k8s auto build"
-  hosts: all
-  become: true
+  hosts: localhost
+  # become: true
   tasks:  
    - name: delete namespace ninja
      command: kubectl delete ns ninja
@@ -24,6 +24,3 @@
   
    - name: deploy k8s/nodejsApp
      command: kubectl apply -f nodejs.yml
-
-   - name: show all deployments
-     command: kubectl get all -n ninja
