@@ -20,17 +20,17 @@ pipeline {
         // }
         stage('deployment k8s') {
             steps {
-              kubernetesDeploy (configs: 'k8s/namespace.yml',kubeconfigId: 'kubernetes',)
-              sh 'sleep 10'
-              kubernetesDeploy (configs: 'k8s/secret.yml',kubeconfigId: 'kubernetes',)
-              sh 'sleep 10'
-              kubernetesDeploy (configs: 'k8s/mongo.yml',kubeconfigId: 'kubernetes',)
-              sh 'sleep 10'
-              kubernetesDeploy (configs: 'k8s/configMap.yml',kubeconfigId: 'kubernetes',)
-              sh 'sleep 10'
-              kubernetesDeploy (configs: 'k8s/mongo-express.yml',kubeconfigId: 'kubernetes',)
-              sh 'sleep 10'
-              kubernetesDeploy (configs: 'k8s/nodejs.yml',kubeconfigId: 'kubernetes',)
+              kubernetesDeploy (configs: 'k8s/k8s-playbook.yml',kubeconfigId: 'kubernetes',)
+              // sh 'sleep 10'
+              // kubernetesDeploy (configs: 'k8s/secret.yml',kubeconfigId: 'kubernetes',)
+              // sh 'sleep 10'
+              // kubernetesDeploy (configs: 'k8s/mongo.yml',kubeconfigId: 'kubernetes',)
+              // sh 'sleep 10'
+              // kubernetesDeploy (configs: 'k8s/configMap.yml',kubeconfigId: 'kubernetes',)
+              // sh 'sleep 10'
+              // kubernetesDeploy (configs: 'k8s/mongo-express.yml',kubeconfigId: 'kubernetes',)
+              // sh 'sleep 10'
+              // kubernetesDeploy (configs: 'k8s/nodejs.yml',kubeconfigId: 'kubernetes',)
 
 
 
